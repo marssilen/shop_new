@@ -12,18 +12,6 @@ if($data['data']['page']!=0){
 <body>
 <?php require_once('app/views/menu.php'); ?>
 <script src="<?= URL ?>public/js/ckeditor/ckeditor.js"></script>
-<div style="margin-top: 20px;margin-right:5px;padding: 0px">
-    <div class="w3-card" style="display: inline-block;padding: 5px;">
-        <a href="<?= 'delete_item/'.$data['data']['id'].'/'.urlencode($data['data']['name']) ?>"><button class="w3-padding-2 w3-btn w3-red w3-round w3-border">حذف</button></a>
-        <a target="_blank" href="<?=URL.'page/'.$data['data']['id'].'/'.urlencode($data['data']['name']) ?>"><button class="w3-padding-2 w3-btn w3-blue w3-round w3-border">نمایش</button></a>
-        <form method="post" action="">
-            صفحه:
-        <input name="page" value="<?=$data['data']['page']?>" class="w3-check" type="checkbox" <?=($data['data']['page']!=0)?'checked':''?>>
-            <button type="submit" name="chpage" style="margin-top:15px;" class="w3-btn w3-green w3-input round_b" >تغییر</button>
-        </form>
-    </div>
-</div>
-<br>
 <div class="w3-white container center" >
     <?php require_once('app/views/msgbox.php'); ?>
     <div class="w3-row">
@@ -79,12 +67,21 @@ if($data['data']['page']!=0){
         </div><!--end left container-->
 
         <div class="w3-col s4" style="padding:15px">
+                <div class="w3-card w3-margin-bottom" style="padding: 4px;">
+                    <div class="w3-row">
+                    <a href="<?= 'delete_item/'.$data['data']['id'].'/'.urlencode($data['data']['name']) ?>"><button class="w3-col s6 w3-btn w3-red">حذف</button></a>
+                    <a target="_blank" href="<?=URL.'page/'.$data['data']['id'].'/'.urlencode($data['data']['name']) ?>"><button class="w3-col s6 w3-btn w3-blue">نمایش</button></a>
+                    </div>
+                    <form method="post" action="">
+                        صفحه:
+                        <input name="page" value="<?=$data['data']['page']?>" class="w3-check" type="checkbox" <?=($data['data']['page']!=0)?'checked':''?>>
+                        <button type="submit" name="chpage" style="margin-top:15px;" class="w3-btn w3-green w3-input round_b" >تغییر</button>
+                    </form>
+                </div>
             <div class="w3-card-2  w3-round">
                 <img alt="Insert an image" src="<?php if(!empty($data['data']['card_image']))echo URL.'public/upload/'.$data['data']['card_image'];else  echo '../img/default.jpg'?>" style="width:100%">
                 <div class="">
-                    <center>
                         <button onclick="document.getElementById('add_card_image_modal').style.display='block'" class="w3-btn w3-green round_b" style="display:block;width:100%">تغییر</button>
-                    </center>
                 </div>
             </div>
             <br>
@@ -145,7 +142,7 @@ if($data['data']['page']!=0){
                 </div>
                 <form method="post" enctype="multipart/form-data" action="change_tag/<?php echo $data['data']['id'] ?>">
                     <div class="w3-container">
-                        <input class="w3-input w3-border w3-round" type="text" name="tag" class="input" value="<?=$data['data']['tag_str']?>"/>
+                        <input class="w3-input w3-border w3-round input" type="text" name="tag" value="<?=$data['data']['tag_str']?>"/>
                         <p>
                             <?php
                             foreach ($data['tags'] as $tag){
