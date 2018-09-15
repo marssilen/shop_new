@@ -1,3 +1,4 @@
 newtest/**
 .idea/**
 public/**
+!public/js/**
