@@ -3,3 +3,4 @@ newtest/**
 public/upload/**
 *.jpg
 *.png
+*.zip
