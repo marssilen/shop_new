@@ -1,6 +1,11 @@
 <?php
 class Login extends Controller
 {
+//    function __construct(){
+//        $settings_m=$this->model('Settings_m');
+//        $this->settings=$settings_m->get();
+//        $this->formModel=$this->model('Login_m');
+//    }
 	public function index()
 	{
 		$this->view('login/index');

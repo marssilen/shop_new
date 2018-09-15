@@ -24,14 +24,19 @@ $menu_list=$this->model('Menu_m')->get_menu();
 <div class="w3-bar w3-white w3-card-2">
 <div class="container" id="myNavbar">
     <div class="w3-margin-top">
+        <div class="w3-hide-small" style="display: inline-block">
         <?php if(!$this->is_login){ ?>
             <div class="w3-right" style="display: block">
                 <a href="javascript:void(0)" style="padding: 10px" onclick="document.getElementById('loginbox').style.display='block';">وارد شوید</a>
                 <a href="<?=URL?>signup/"> ثبت نام</a>
             </div>
-        <?php }else{ ?>
+        <?php }else{
+            $m=$this->model('Page_m');
+            $fid=$m->get_factor(Session::get('id'));
+            ?>
         <a href="<?=URL?>cp/factor_review" class="basket w3-green w3-round w3-border-green" style="position: relative;text-decoration: none;line-height: 35px;margin-right:15px"><i id="basket"></i>سبد خرید <span id="basketItems" class="badge"><?=$this->model('Menu_m')->count_items_in_basket()?></span></a>
         <?php } ?>
+        </div>
         <form class="searchBox" action="<?=URL?>search/" method="get">
             <input name="q" placeholder="جستجو" class="w3-border w3-white w3-border-gray w3-round search">
             <button id="btnSearch"></button>
@@ -46,8 +51,6 @@ $menu_list=$this->model('Menu_m')->get_menu();
     <div class="w3-hide-small container">
         <?php if(!$this->is_login){ ?>
         <?php }else{
-            $m=$this->model('Page_m');
-            $fid=$m->get_factor(Session::get('id'));
             ?>
             <a href="<?= URL ?>cp/" class="w3-button"> مدیریت کاربری</a>
             <a href="<?= URL ?>cp/logout/" class="w3-button"> خروج</a>
@@ -99,8 +102,6 @@ $menu_list=$this->model('Menu_m')->get_menu();
         <?php if(!$this->is_login){ ?>
 			<a href="<?= URL ?>login" onclick="w3_close()" class="w3-bar-item w3-button w3-right-align">وارد شوید</a>
         <?php }else{
-            $m=$this->model('Page_m');
-            $fid=$m->get_factor(Session::get('id'));
             ?>
 			<a href="<?= URL ?>cp/" onclick="w3_close()" class="w3-bar-item w3-button"> مدیریت کاربری</a>
 			<a href="<?= URL ?>cp/logout/" onclick="w3_close()" class="w3-bar-item w3-button"> خروج</a>

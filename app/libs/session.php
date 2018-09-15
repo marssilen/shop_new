@@ -6,6 +6,7 @@ Class Session{
 		ini_set('session.cookie_httponly',1);
 		ini_set('session.use_only_cookies',1);
 		*/
+//        ini_set('session.cookie_lifetime',60*60*24*7);//24 hours*7=week
 		session_start();
 	}
 	public static function set($key,$value){
