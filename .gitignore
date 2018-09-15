@@ -1,4 +1,5 @@
 newtest/**
 .idea/**
-public/**
-!public/js/**
+public/upload/**
+*.jpg
+*.png
